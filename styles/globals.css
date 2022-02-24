@@ -1,9 +1,15 @@
 html,
 body {
+  overflow: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+:root {
+  --background-container: #070625;
+  --main-font-color: #feffff;
 }
 
 a {
@@ -13,4 +19,6 @@ a {
 
 * {
   box-sizing: border-box;
+  color: var(--main-font-color);
 }
+

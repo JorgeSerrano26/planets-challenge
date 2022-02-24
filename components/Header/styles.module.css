@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    flex-direction: row;
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
+}
+
+
+ul.links_list{
+    display: flex;
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}
+
+ul.links_list li {
+    margin-right: 10px;
+}
+ul.links_list li:last-child {
+    margin-right: 0;
+}
+

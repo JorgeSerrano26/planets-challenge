@@ -3,6 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Planets from '../service/Planets';
+import { useState } from 'react';
+import classNames from 'classnames';
+import Header from '../components/Header';
+import packageConfig from '../package.json';
 
 interface Planet {
   "name": string,
@@ -33,14 +37,27 @@ interface IHome {
 }
 
 const Home: NextPage<IHome> = ({ planets = [] }) => {
+  const [currentPlanet, setCurrentPlanet] = useState('earth');
+
+  const getPlanetsLinks = () => planets.map(({ name }) => ({ name, url: `#${name}` }))
+
+  const homeClassnames = classNames(styles.app);
+
+  const appName: string = packageConfig.name;
 
   return (
-    <div className={styles.container}>
-      <img src="/assets/background-stars.svg" />
-      {planets.map(({ name, images }, index) => <img key={`image-${name}-${index}`} src={images.planet} alt={name} />)}
+    <div className={homeClassnames}>
+      <Header planets={getPlanetsLinks()} />
+      {/*Content*/}
     </div>
+
   )
 }
+
+{/* <div className={styles.container}>
+      <img src="/assets/background-stars.svg" />
+      {planets.map(({ name, images }, index) => <img key={`image-${name}-${index}`} src={images.planet} alt={name} />)}
+    </div> */}
 
 export async function getServerSideProps(_ctx: NextPageContext) {
   const planets = await Planets.get();
