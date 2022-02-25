@@ -1,0 +1,14 @@
+@import '../../styles/breakpoints.scss';
+@import '../../styles/colors.scss';
+
+@import "./phone.scss";
+
+@media (min-width: $breakpoint-tablet) {
+    @import "./tablet.scss";
+}
+
+@media (min-width: $breakpoint-desktop) {
+    @import "./desktop.scss";
+}
+
+
