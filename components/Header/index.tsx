@@ -5,20 +5,23 @@ import classNames from 'classnames';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useAppContext } from '../../contexts/appContext';
-import Menu from './Components/Menu';
 
 /**
  * Styles
  */
 import styles from './index.module.scss';
-import Aside from './Components/Aside';
+
+/**
+ * Components
+ */
+import Aside from '../Aside';
 
 /**
  * Component 
  */
 const Header: React.FC = () => {
     const headerRef = useRef<HTMLHeadingElement>(null);
-    const [asideStyles, setAsideStyles] = useState({ height: 0, top: 0});
+    const [asideStyles, setAsideStyles] = useState({ height: 0, top: 0 });
     const { openMenu, toggleMenu, changePlanet, planets } = useAppContext();
     const [width, setWidth] = useState(0);
 
@@ -33,12 +36,12 @@ const Header: React.FC = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('resize', () => { 
+        window.addEventListener('resize', () => {
             //Tablet
-            if(window.innerWidth > 769){
+            if (window.innerWidth > 769) {
                 toggleMenu(false);
             }
-            setWidth(window.innerWidth) 
+            setWidth(window.innerWidth)
         });
         return () => {
             window.removeEventListener('resize', () => undefined);
@@ -61,11 +64,11 @@ const Header: React.FC = () => {
                 <Image src="/assets/icon-hamburger.svg" alt='Menu button' layout="fill" />
             </span>
         </header>
-        <Aside 
-            top={asideStyles.top} 
-            height={asideStyles.height} 
-            planets={mapMapItems} 
-            onClickItem={onChangePlanet} 
+        <Aside
+            top={asideStyles.top}
+            height={asideStyles.height}
+            planets={mapMapItems}
+            onClickItem={onChangePlanet}
             open={openMenu}
         />
     </>

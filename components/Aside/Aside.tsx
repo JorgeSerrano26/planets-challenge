@@ -19,8 +19,8 @@ type TAside = {
 const Aside: React.FC<TAside> = ({ className, planets, onClickItem }) => {
     const planetsMapper = (planet: TPlanetItem, index: number) => <MenuItemList
         key={`aside-menu-item-${index}`}
-        onClickItem={onClickItem}
         {...planet}
+        onClickItem={onClickItem}
     />
 
     return <aside className={className}>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { dark_blue } from '../../../../styles/colors';
+import { dark_blue } from '../../styles/colors';
 import AsideComponent from './Aside';
-
 
 const Aside = styled(AsideComponent)`
     position: fixed;

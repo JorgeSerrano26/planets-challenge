@@ -1,20 +1,22 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-interface IPlanetItem {
-    name: string;
-    theme: string;
-    onClickItem: (name: string) => void;
-    className?: string;
+interface IPlanetItem  {
+  name: string;
+  theme: string;
+  onClickItem: (name: string) => void;
+  className?: string;
 };
 
-const MenuItem: React.FC<IPlanetItem> = ({ name, onClickItem, theme, className }) => <li className={className} onClick={() => onClickItem(name)}>
+const MenuItem: React.FC<IPlanetItem> = ({ name, onClickItem, theme, className }) => (
+  <li className={className} onClick={() => onClickItem(name)}>
     <span className="dot" style={{ backgroundColor: theme }} />
     <p className="planet-name">{name}</p>
     <span className="chevron">
-        <Image src="/assets/icon-chevron.svg" alt='Menu arrow' layout="fill" />
+      <Image src="/assets/icon-chevron.svg" alt='Menu arrow' layout="fill" />
     </span>
-</li>
+  </li>
+);
 
 const MenuItemList = styled(MenuItem)`
     display: flex;
