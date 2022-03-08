@@ -1,22 +1,18 @@
-@import './colors.scss';
-
-html,
-body {
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  // font-family: "Antonio", sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@import "./colors.scss";
 
 * {
   box-sizing: border-box;
   color: $white;
 }
 
+html,
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
 
-
+a {
+  color: inherit;
+  text-decoration: none;
+}

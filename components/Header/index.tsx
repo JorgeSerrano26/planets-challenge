@@ -11,13 +11,14 @@ import Menu from './Components/Menu';
  * Styles
  */
 import styles from './index.module.scss';
+import Aside from './Components/Aside';
 
 /**
  * Component 
  */
 const Header: React.FC = () => {
     const headerRef = useRef<HTMLHeadingElement>(null);
-    const [asideStyles, setAsideStyles] = useState({});
+    const [asideStyles, setAsideStyles] = useState({ height: 0, top: 0});
     const { openMenu, toggleMenu, changePlanet, planets } = useAppContext();
     const [width, setWidth] = useState(0);
 
@@ -48,21 +49,25 @@ const Header: React.FC = () => {
         const elHeight = headerRef?.current?.offsetHeight ?? 0;
         setAsideStyles({
             top: elHeight,
-            height: `${window.screen.height - elHeight}px`
+            height: window.screen.height - elHeight
         });
     }, [width, headerRef])
 
     return <>
         <header id="header" className={styles.header} ref={headerRef}>
             <p className={styles.header__logo}>THE PLANETS</p>
-            <Menu planets={mapMapItems} onClickItem={onChangePlanet} />
+            {/* <Menu planets={mapMapItems} onClickItem={onChangePlanet} /> */}
             <span className={menuTriggerClassNames} onClick={() => toggleMenu(!openMenu)} role="button">
                 <Image src="/assets/icon-hamburger.svg" alt='Menu button' layout="fill" />
             </span>
         </header>
-        <aside className={asideClassNames} style={asideStyles}>
-            <Menu planets={mapMapItems} onClickItem={onChangePlanet} />
-        </aside>
+        <Aside 
+            top={asideStyles.top} 
+            height={asideStyles.height} 
+            planets={mapMapItems} 
+            onClickItem={onChangePlanet} 
+            open={openMenu}
+        />
     </>
 }
 
